@@ -3,7 +3,6 @@ class Solution:
         """
         T:O(n)
         S:O(n)
-        """
         if not nums:
             return 0
         numsset = set(nums)
@@ -16,3 +15,13 @@ class Solution:
                     counter += 1
                 global_max = max(global_max, counter)	
         return global_max
+        """
+        nums = set(nums)
+        best = 0
+        for x in nums:
+            if x - 1 not in nums:
+                y = x + 1
+                while y in nums:
+                    y += 1
+                best = max(best, y - x)
+        return best
