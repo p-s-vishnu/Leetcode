@@ -26,7 +26,6 @@ class Solution:
         root.insert(word)
         
         
-        
         def dfs(i, j, w, node):
             if (i,j) in visited or w not in node.children:
                 return False
@@ -34,20 +33,17 @@ class Solution:
             node = node.children[w]
             if node.is_word:
                 return True
+            res = False
             if i > 0:       
-                if dfs(i-1, j, board[i-1][j], node):
-                    return True
+                res |= dfs(i-1, j, board[i-1][j], node)
             if i < R-1:     
-                if dfs(i+1, j, board[i+1][j], node):
-                    return True
+                res |= dfs(i+1, j, board[i+1][j], node)
             if j > 0:       
-                if dfs(i, j-1, board[i][j-1], node):
-                    return True
+                res |= dfs(i, j-1, board[i][j-1], node)
             if j < C-1:     
-                if dfs(i, j+1, board[i][j+1], node):
-                    return True
+                res |= dfs(i, j+1, board[i][j+1], node)
             visited.remove((i,j))
-            return False
+            return res
         
         for r in range(R):
             for c in range(C):
