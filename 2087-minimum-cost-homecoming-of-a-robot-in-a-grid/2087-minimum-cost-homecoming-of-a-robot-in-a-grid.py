@@ -10,6 +10,7 @@ class Solution:
             reverse of house and bot
         4. BFS with caching T:O(m*n) S:O(m*n)
             Optimal: Geometry -> walk in shortest path and calculate cost
+                    T:O(m+n) S:O(1)
             
         5. Time limit exceed for the below
             R, C = len(rowCosts), len(colCosts)
