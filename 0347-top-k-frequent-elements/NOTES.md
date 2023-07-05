@@ -20,6 +20,3 @@ if k == len(nums):
 return nums
 # build hash map: char and how often it appears
 count = Counter(nums)
-return heapq.nlargest(k, count.keys(), key = count.get)
-```
-​
