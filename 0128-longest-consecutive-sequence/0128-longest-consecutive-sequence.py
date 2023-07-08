@@ -17,11 +17,11 @@ class Solution:
         return global_max
         """
         nums = set(nums)
-        best = 0
-        for x in nums:
-            if x - 1 not in nums:
-                y = x + 1
-                while y in nums:
-                    y += 1
-                best = max(best, y - x)
-        return best
+        max_len = 0
+        for n in nums:
+            if n-1 in nums: continue
+            right = n+1
+            while right in nums:
+                right += 1
+            max_len = max(max_len, right-n)
+        return max_len
