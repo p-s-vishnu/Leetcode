@@ -5,7 +5,7 @@ class Solution:
         S:O(n)
         """
         if len(s) == 0: return True
-        if len(s) < 2: return False
+        if len(s) == 1: return False
         br_map = {
             "]":"[",
             "}": "{",
