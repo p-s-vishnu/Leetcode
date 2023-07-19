@@ -7,8 +7,7 @@ class Solution:
         Bisect?
         """
         l = 0
-        r = bisect.bisect(numbers, target-numbers[l])
-        if r >= len(numbers): r -= 1
+        r = len(numbers) - 1
         
         while l < r:
             if numbers[l]+numbers[r] == target:
