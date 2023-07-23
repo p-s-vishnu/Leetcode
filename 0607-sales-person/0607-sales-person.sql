@@ -5,8 +5,6 @@ WITH red_sales AS (
     WHERE com_id = (SELECT DISTINCT com_id FROM Company WHERE name = 'RED')
 )
 
-
 SELECT DISTINCT s.name
-FROM SalesPerson s LEFT JOIN 
-        Orders o ON s.sales_id = o.sales_id 
-WHERE s.sales_id NOT IN (SELECT DISTINCT id from red_sales);
+FROM SalesPerson s
+WHERE s.sales_id NOT IN (SELECT id from red_sales);
