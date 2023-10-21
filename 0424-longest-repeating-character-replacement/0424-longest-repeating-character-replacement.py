@@ -1,22 +1,20 @@
+from collections import defaultdict
 class Solution:
     """
     Sliding window
     T:O(n)
-    S:O(1)
+    S:O(26) => O(1)
     """
-    
     def characterReplacement(self, s: str, k: int) -> int:
-        if len(s) <= 1:
-            return len(s)
-        max_count = 0
-        maxf = 0
-        l = 0
-        char_map = {}
+        if len(s) < 2: return len(s)
+
+        l = maxf = max_count = 0
+        counter = defaultdict(int)
         for r, char in enumerate(s):
-            char_map[char] = char_map.get(char, 0) + 1
-            maxf = max(maxf, char_map[char])        # neetcode
+            counter[char] += 1
+            maxf = max(counter[char], maxf)
             while (r-l+1) - maxf > k:
-                char_map[s[l]] -= 1
+                counter[s[l]] -= 1
                 l += 1
-            max_count = max(max_count, r-l+1)
+            max_count = max((r-l+1), max_count)
         return max_count
